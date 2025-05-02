@@ -19,7 +19,8 @@ This repository contains beginner-level Python practice problems focused on:
 | `range_filter.py` | Print values between 5 and 10 (inclusive) |
 | `even_count.py` | Count how many even numbers exist |
 | `even_print_and_count.py` | Print even numbers and count them |
-
+| `grade_checker.py` | Convert score input to letter grade using if/elif/else |
+| `vector_sum_average_basic.txt` | Text summary of vector sum and average calculation |
 ## 📝 Purpose
 
 This repository is for practicing:
