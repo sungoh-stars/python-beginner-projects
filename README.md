@@ -21,6 +21,7 @@ This repository contains beginner-level Python practice problems focused on:
 | `even_print_and_count.py` | Print even numbers and count them |
 | `grade_checker.py` | Convert score input to letter grade using if/elif/else |
 | `vector_sum_average_basic.txt` | Text summary of vector sum and average calculation |
+| `Add temperature, score, and average calculation functions |
 ## 📝 Purpose
 
 This repository is for practicing:
