@@ -26,6 +26,7 @@ This repository contains beginner-friendly Python practice problems focused on:
 | `summarize_scores.py` | Calculate total, average, and letter grade from score list |
 | `get_average.py` | Return the average of a list of numbers |
 | `vector_sum_average_basic.txt` | Text explanation of vector sum and average |
+| `score_summary.py` | Take comma-separated user input, calculate total, average, and letter grade |
 
 ---
 
