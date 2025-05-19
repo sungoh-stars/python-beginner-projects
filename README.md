@@ -28,6 +28,7 @@ This repository contains beginner-friendly Python practice problems focused on:
 | `vector_sum_average_basic.txt` | Text explanation of vector sum and average |
 | `score_summary.py` | Take comma-separated user input, calculate total, average, and letter grade |
 | grade_feedback_calculator.py | Take comma-separated score input, calculate average, letter grade, and give feedback |
+| grade_analyzer.py | Take comma-separated score input, calculate average, max/min, assign grade, and display summary |
 
 
 ---
