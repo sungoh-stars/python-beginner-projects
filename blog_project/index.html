@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> 내 블로그 </title>
+</head>
+<body>
+    <h1> 내 블로그 </h1>
+    <a href="/write">글 쓰기 페이지</a>
+    <hr>
+    {% for post in posts %}
+        <h3>{{ post[1] }}</h3>
+        <p>{{ post[2] }}</p>
+        <small>{{ post[3]}}</small>
+    <hr>
+    {% endfor %}
+</body>
+</html>
