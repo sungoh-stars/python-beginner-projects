@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>글 수정하는 페이지</title>
+</head>
+<body>
+    <h1>글 수정하기</h1>
+    <form method="POST">
+    <input type="text" name="title" value="{{post[1]}}">
+    <textarea name="content">{{post[2]}}</textarea> 
+    <button type="submit">수정 완료!</button>
+</form>
+</body>
+</html>
