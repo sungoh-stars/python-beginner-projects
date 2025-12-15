@@ -1,0 +1,65 @@
+from flask import Flask, render_template, request,redirect
+import sqlite3
+
+app = Flask(__name__)
+
+def text():
+    conn = sqlite3.connect("blog.db")
+    return conn
+
+def word():
+    conn = text()
+    conn.execute("""CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 title TEXT NOT NULL,
+                 content TEXT NOT NULL,
+                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)""")
+    conn.commit()
+    conn.close()
+
+@app.route("/")
+def index():
+    conn = text()
+    posts = conn.execute("SELECT * FROM posts ORDER BY id DESC").fetchall()
+    conn.close()
+    return render_template("index.html", posts = posts)
+
+@app.route("/write", methods = ["POST", "GET"])
+def write():
+    if request.method == "POST":
+        title = request.form["title"]
+        content = request.form["content"]
+        conn = sqlite3.connect("blog.db")
+        conn.execute("INSERT INTO posts (title, content)VALUES(?, ?)", (title, content,))
+        conn.commit()
+        conn.close()
+        return redirect("/")
+    return render_template("write.html")
+
+@app.route("/view/<post_id>")
+def view(post_id):
+    conn = text()
+    cursor = conn.execute("SELECT * FROM posts WHERE id = ?", (post_id,))
+    post = cursor.fetchone()
+    conn.close()
+    return render_template("view.html", post = post)
+
+@app.route("/edit/<post_id>", methods = ["POST", "GET"])
+def edit(post_id):
+    if request.method == "POST":
+        title = request.form["title"]
+        content = request.form["content"]
+
+        conn = text()
+        conn.execute("UPDATE posts SET title = ?, content = ? WHERE id= ?", (title, content,post_id))
+        conn.commit()
+        conn.close()
+        return redirect("/view/" + post_id)
+    
+    conn =text()
+    post = conn.execute("SELECT * FROM posts WHERE id = ?", (post_id)).fetchone()
+    conn.close()
+    return render_template("edit.html", post = post)
+
+if __name__ == "__main__":
+    word()
+    app.run(debug=True)
