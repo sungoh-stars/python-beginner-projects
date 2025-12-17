@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> 글 보는 페이지 </title>
+</head>
+<body>
+    <h1>{{post[1]}}</h1>
+    <p>{{post[2]}}</p>
+    <small>{{post[3]}}</small>
+    <hr>
+    <h3>댓글</h3>
+    {% for comment in comments %}
+        <p>{{comment[2]}}</p>
+        <small>{{comment[3]}}</small> 
+    <hr>
+    {% endfor %}
+    <a href="/edit/{{post[0]}}">수정</a>
+    <a href="/delete/{{post[0]}}">삭제</a>
+    <a href="/"> 메인 페이지로 가기</a>
+    <form method="POST" action="/comment/{{post[0]}}">
+        <textarea name="content"></textarea>
+        <button type="submit">댓글작성</button>
+    </form>
+</body>
+</html>
