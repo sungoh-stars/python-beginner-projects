@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> 카테고리 </title>
+</head>
+<body>
+    <h1> {{category}}</h1>
+
+    {% for post in posts %}
+    <h3>
+        <a href="/view/{{post[0]}}"> {{post[1]}}</a>
+        <small>{{post[3]}}</small>
+    </h3>
+        <p>{{post[2]}}</p>
+        <hr>
+    {% endfor %}
+
+    <a href="/">메인으로</a>
+</body>
+</html>
