@@ -1,0 +1,29 @@
+    conn.execute("""CREATE TABLE IF NOT EXISTS posts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        category TEXT NOT NULL,
+        likes INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )""")
+
+@app.route("/write", methods = ["POST", "GET"])
+def write():
+    if request.method == "POST":
+        title = request.form["title"]
+        content = request.form["content"]
+        category = request.form["category"]
+        conn = sqlite3.connect("blog.db")
+        conn.execute("INSERT INTO posts (title, content, category)VALUES(?, ?, ?)", (title, content,category,))
+        conn.commit()
+        conn.close()
+        return redirect("/")
+    return render_template("write.html")
+
+@app.route("/view/<post_id>")
+def view(post_id):
+    conn = text()
+    post = conn.execute("SELECT * FROM posts WHERE id = ?", (post_id,)).fetchone()
+    comments = conn.execute("SELECT * FROM comments WHERE post_id = ?", (post_id)).fetchall()
+    conn.close()
+    return render_template("view.html", post = post, comments = comments)
