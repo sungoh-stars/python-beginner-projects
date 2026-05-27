@@ -1,6 +1,8 @@
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-                if sorted(s) == sorted(t):
-                    return True
-                else:
-                    return False
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+        
+        for i in range(len(nums) - 1):
+            if nums[i] == nums[i + 1]:
+                return True
+        return False
