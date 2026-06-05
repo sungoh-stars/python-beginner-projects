@@ -1,0 +1,13 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        total = {}
+        for i in s:
+            if i in total:
+                total[i] += 1
+            else:
+                total[i] = 1
+        
+        for i,num in enumerate(s):
+            if total[num] == 1:
+                return i
+        return -1
