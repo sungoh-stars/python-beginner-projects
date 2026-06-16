@@ -1,0 +1,15 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        stack = [] #찌꺼기
+        total = {} #남은 값
+
+        for i in nums2:
+            if not stack:
+                stack.append(i)
+            else:
+                while stack and i > stack[-1]:
+                    total[stack.pop()] = i
+                stack.append(i)
+        while stack:
+            total[stack.pop()] = -1
+        return [total[n] for n in nums1]
