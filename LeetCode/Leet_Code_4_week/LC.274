@@ -1,0 +1,13 @@
+def minSubarray(nums, target):
+    left = 0
+    low_num = float("inf")
+    now_num = 0
+
+    for i in range(len(nums)):
+        now_num += nums[i]
+        while now_num >= target:
+            if i - left + 1 < low_num:
+                low_num = i - left + 1
+            now_num -= nums[left]
+            left += 1
+    return low_num if low_num != float("inf") else 0
