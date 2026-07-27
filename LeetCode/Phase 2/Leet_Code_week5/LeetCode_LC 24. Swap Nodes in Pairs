@@ -1,0 +1,14 @@
+def num(head):
+    stars = head.next
+    num1 = head
+    num2 = head.next
+
+    while num1 != None and num2 != None:
+        next_pair = num2.next
+        num1.next = next_pair
+        num2.next = num1
+
+        num1 = next_pair
+        num2 = next_pair.next
+
+    return stars
