@@ -1,2 +1,0 @@
-app.py
-lost.html
