@@ -1,0 +1,30 @@
+class Solution:
+    def getIntersectionNode(self, headA, headB):
+        len_a = 0
+        curr = headA
+        while curr != None:
+            len_a += 1
+            curr = curr.next
+
+        len_b = 0
+        curr = headB
+        while curr != None:
+            len_b += 1
+            curr = curr.next
+
+        curr_a = headA
+        curr_b = headB
+        total = len_a - len_b
+
+        for i in range(abs(total)):
+            if total > 0:
+                curr_a = curr_a.next
+            else:
+                curr_b = curr_b.next
+
+        while curr_a and curr_b:
+            if curr_a is curr_b:
+                return curr_a
+            curr_a = curr_a.next
+            curr_b = curr_b.next
+        return None
