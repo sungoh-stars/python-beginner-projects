@@ -1,14 +1,18 @@
-def num(head):
-    stars = head.next
-    num1 = head
-    num2 = head.next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        prev = dummy
+        dummy.next = head
+        num1 = head
+        num2 = num1.next if num1 else None
 
-    while num1 != None and num2 != None:
-        next_pair = num2.next
-        num1.next = next_pair
-        num2.next = num1
+        while num1 != None and num2 != None:
+            total = num2.next
+            num2.next = num1
+            num1.next = total
+            prev.next = num2
+            prev = num1
 
-        num1 = next_pair
-        num2 = next_pair.next
-
-    return stars
+            num1 = total
+            num2 = num1.next if num1 else None
+        return dummy.next
