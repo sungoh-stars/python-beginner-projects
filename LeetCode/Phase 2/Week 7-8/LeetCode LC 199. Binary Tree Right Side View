@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rightSideView(self, root: TreeNode | None) -> list[int]:
+        if root is None:
+            return []
+        
+        total = []
+        now = [root]
+
+        while now:
+            num = []
+            for i in range(len(now)):
+                keword = now.pop(0)
+                num.append(keword.val)
+                if keword.left is not None:
+                    now.append(keword.left)
+                if keword.right is not None:
+                    now.append(keword.right)
+            total.append(num[-1])
+        return total
