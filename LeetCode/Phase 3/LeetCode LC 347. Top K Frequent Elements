@@ -1,0 +1,22 @@
+class Solution:
+    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
+        num = {}
+        for i in nums:
+            if not i in num:
+                num[i] = 1
+            elif i in num:
+                num[i] += 1
+
+        total = []
+        for i in range(len(nums) + 1):
+            total.append([])
+
+        for i in num:
+            total[num[i]].append(i)
+
+        result = []
+        for i in range(len(nums), 0, -1):
+            for n in total[i]:
+                result.append(n)
+            if len(result) >= k:
+                return result
