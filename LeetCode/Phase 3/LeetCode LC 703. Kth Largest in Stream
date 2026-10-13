@@ -1,0 +1,18 @@
+import heapq
+class KthLargest:
+
+    def __init__(self, k: int, nums: list[int]):
+        self.result = []
+        for i in nums:
+            heapq.heappush(self.result, i)
+        self.k = k
+
+    def add(self, val: int) -> int:
+        heapq.heappush(self.result,val)
+        while len(self.result) > self.k:
+            heapq.heappop(self.result)
+        return self.result[0]
+
+# Your KthLargest object will be instantiated and called as such:
+# obj = KthLargest(k, nums)
+# param_1 = obj.add(val)
