@@ -1,0 +1,16 @@
+def min_mats(times):
+    if not times:
+        return 0
+
+    recover = sorted(times)
+    new_met = []
+
+    for start, end in recover:
+        if not new_met:
+            new_met.append(end)
+        elif start >= min(new_met):
+            new_met.remove(min(new_met))
+            new_met.append(end)
+        else:
+            new_met.append(end)
+    return len(new_met)
