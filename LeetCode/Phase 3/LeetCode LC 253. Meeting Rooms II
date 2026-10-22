@@ -1,0 +1,21 @@
+import heapq
+from typing import List
+
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        if not intervals:
+            return 0
+
+        new_intervals = sorted(intervals)
+
+        total = []
+
+        for start, end in new_intervals:
+            if not total:
+                heapq.heappush(total, end)
+            elif start >= total[0]:
+                heapq.heappop(total)
+                heapq.heappush(total, end)
+            else:
+                heapq.heappush(total, end)
+        return len(total)
